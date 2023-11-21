@@ -1,7 +1,7 @@
 const FilterSection = () => {
 	return (
-		<div>
-			<h1>hello world</h1>
+		<div className="filer-section">
+			<h1>Filters</h1>
 		</div>
 	);
 };

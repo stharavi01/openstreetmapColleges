@@ -1,4 +1,4 @@
-export const GeoJSON = {
+export const collegeData = {
 	type: "FeatureCollection",
 	generator: "overpass-turbo",
 	copyright:
