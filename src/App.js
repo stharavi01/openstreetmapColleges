@@ -1,6 +1,4 @@
-import "./App.css";
-import HomeLayout from "./HomeLayout";
-import "./";
+import HomeLayout from "./pages/HomeLayout";
 
 function App() {
 	return <HomeLayout />;

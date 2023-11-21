@@ -1,6 +1,6 @@
-import FilterSection from "./FilterSection";
-import MapSection from "./MapSection";
-import "./index.css";
+import FilterSection from "../components/FilterSection";
+import MapSection from "../components/MapSection";
+
 const HomeLayout = () => {
 	return (
 		<div>

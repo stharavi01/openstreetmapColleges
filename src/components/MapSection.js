@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
-import "./GeoJSON";
+import "../GeoJSON";
 const MapSection = () => {
 	return (
 		<div>

@@ -12,21 +12,3 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
-
-* {
-	border: 0;
-	padding: 0;
-	margin: 0;
-}
-
-.heading {
-	position: relative;
-	left: 10%;
-}
-
-.grid-container {
-	width: 100vw;
-	height: 100vh;
-	display: grid;
-	grid-template-columns: 1fr 0.5fr;
-}
