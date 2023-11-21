@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "../GeoJSON";
 const MapSection = () => {
 	return (
@@ -8,7 +8,7 @@ const MapSection = () => {
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-				{/* <GeoJSON data={GeoJSON} /> */}
+
 				<Marker position={[51.505, -0.09]}>
 					<Popup>
 						A pretty CSS3 popup. <br /> Easily customizable.
