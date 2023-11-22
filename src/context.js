@@ -5,9 +5,9 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState(data);
-  
 
-  const filteredProperties = filteredData.features.map((collegeData) => {
+  // Ensure filteredData and filteredData.features exist before mapping
+  const filteredProperties = filteredData && filteredData.features ? filteredData.features.map((collegeData) => {
     const { properties } = collegeData;
     const {
       name,
@@ -18,20 +18,19 @@ const AppProvider = ({ children }) => {
       'student:count': studentCount,
     } = properties;
     return { name, iscedLevel, buildingCount, operatorType, personnelCount, studentCount };
-  });
+  }) : [];
 
   const contextValue = {
     filteredProperties,
     filteredData,
-    setFilteredData
+    setFilteredData,
   };
 
-  
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {
   return useContext(AppContext);
-}
+};
 
-export  {AppContext, AppProvider};
+export { AppContext, AppProvider };
