@@ -5,9 +5,7 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState(data);
-  const updateFilteredData = (newFilteredData) => {
-    setFilteredData(newFilteredData)
-  }
+  
 
   const filteredProperties = filteredData.features.map((collegeData) => {
     const { properties } = collegeData;
