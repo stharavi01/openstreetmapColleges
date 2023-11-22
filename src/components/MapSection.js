@@ -1,7 +1,8 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "../data";
+import React from "react";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { collegeData } from "../data";
+import { data } from "../data";
+
 const MapSection = () => {
 	const position = [27.69798874810426, 85.32922094187085];
 
@@ -13,20 +14,10 @@ const MapSection = () => {
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
 
-				{collegeData.features.map((feature) => {
-					const { properties, geometry, id } = feature;
-					console.log(properties);
-					return (
-						<Marker
-							key={id}
-							position={[geometry.coordinates[1], geometry.coordinates[0]]}
-						>
-							<Popup>{properties.name}</Popup>
-						</Marker>
-					);
-				})}
+				<GeoJSON data={data} />
 			</MapContainer>
 		</div>
 	);
 };
+
 export default MapSection;
