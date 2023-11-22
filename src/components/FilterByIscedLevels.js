@@ -3,12 +3,13 @@ import { useGlobalContext } from '../context';
 import { Dropdown } from 'semantic-ui-react';
 
 const FilterByIscedLevels = () => {
-  const { filteredProperties, FilteredData } = useGlobalContext();
+  const { filteredProperties, filteredData } = useGlobalContext();
   
 
   const handleSecondaryDisplay = () => {
     const filteredSecondary = filteredProperties.filter((level)=>level.iscedLevel === 'secondary');
     console.log(filteredSecondary);
+     console.log(filteredData);
   }
 
   // const iscedLevels = filteredProperties.map((property) => ({

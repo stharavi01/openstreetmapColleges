@@ -22,7 +22,8 @@ const AppProvider = ({ children }) => {
 
   const contextValue = {
     filteredProperties,
-    // Add other values here if needed
+    filteredData,
+    setFilteredData
   };
 
   
