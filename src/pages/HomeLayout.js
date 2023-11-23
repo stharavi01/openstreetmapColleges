@@ -10,10 +10,10 @@ const HomeLayout = () => {
 			<div>
 				<Grid columns={2}>
 					<Grid.Row>
-						<Grid.Column width={12} className="remove-padding">
+						<Grid.Column width={10} className="remove-padding">
 							<MapSection />
 						</Grid.Column>
-						<Grid.Column width={4} className="remove-padding">
+						<Grid.Column width={6} className="filter-section">
 							<FilterSection />
 						</Grid.Column>
 					</Grid.Row>
