@@ -1,41 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGlobalContext } from '../context';
-import { data } from '../data';
-import { Header, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 
 const FilterByOperatorType = () => {
   const { filteredProperties } = useGlobalContext();
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const totalColleges = data.features.length;
-
-  const operatorTypeCounts = filteredProperties.reduce((counts, type) => {
+  const collegeTypeCounts = filteredProperties.reduce((counts, type) => {
     if (type.operatorType !== undefined) {
       counts[type.operatorType] = (counts[type.operatorType] || 0) + 1;
     }
     return counts;
   }, {});
 
-  const operatorTypeElements = Object.entries(operatorTypeCounts).map(([type, count], id) => (
+  const collegeTypeElements = Object.entries(collegeTypeCounts).map(([type, count], id) => (
     <Table.Row key={id}>
-      <Table.Cell>{type}</Table.Cell>
-      <Table.Cell>{count}</Table.Cell>
+      <Table.Cell style={{width:'50%'}}>{type}</Table.Cell>
+      <Table.Cell style={{width:'50%'}}>{count}</Table.Cell>
     </Table.Row>
   ));
 
+  const handleHeaderClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <div>
-      <Table celled padded>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell singleLine>College Types</Table.HeaderCell>
-            <Table.HeaderCell>Total Numbers ({totalColleges})</Table.HeaderCell>
+    <>
+      <Table celled >
+        <Table.Header onClick={handleHeaderClick} >
+          <Table.Row style={{ cursor: 'pointer' }}>
+            <Table.HeaderCell colSpan="2">College Types</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-        <Table.Body>
-          {operatorTypeElements}
-        </Table.Body>
+        {isExpanded && (
+          <Table.Body>
+            {collegeTypeElements}
+          </Table.Body>
+        )}
       </Table>
-    </div>
+    </>
   );
 };
 

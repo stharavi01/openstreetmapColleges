@@ -20,7 +20,7 @@ const MapSection = () => {
     };
   };
 	return (
-			<MapContainer center={position} zoom={13} style={{height:'100vh'}}>
+			<MapContainer center={position} zoom={13} style={{height:'calc(100vh - 45px)', marginTop: '20px'}}>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
