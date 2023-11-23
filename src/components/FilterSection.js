@@ -11,6 +11,7 @@ const FilterSection = () => {
       <h2 >Insights</h2>
    
       <FilterByOperatorType/>
+     
        {/* <FilterByIscedLevels/> */}
    
     </div>

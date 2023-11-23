@@ -4,22 +4,20 @@ import MapSection from "../components/MapSection";
 import { Grid } from "semantic-ui-react";
 
 const HomeLayout = () => {
-	return (
-		<div>
-			<MainHeader /> <br />
-			<div>
-				<Grid columns={2}>
-					<Grid.Row>
-						<Grid.Column width={10} className="remove-padding">
+	return (	
+			<>
+				<MainHeader /> <br />
+				<Grid columns={2} >
+						<Grid.Column width={10} className="map-container">
 							<MapSection />
 						</Grid.Column>
-						<Grid.Column width={6} className="filter-section">
+						<Grid.Column width={6} className="filter-container">
 							<FilterSection />
 						</Grid.Column>
-					</Grid.Row>
+					
 				</Grid>
-			</div>
-		</div>
+			</>
+	
 	);
 };
 export default HomeLayout;

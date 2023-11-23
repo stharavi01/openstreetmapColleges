@@ -5,24 +5,20 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	overflow: hidden;
 	width: 100vw;
+	overflow: hidden;
+
 }
 
 .header {
 	height: 10px;
 	margin: 10px;
+	
 }
 
-.map-section {
-	width: 100%;
-	height: calc(100vh - 50px);
+.filter-container{
+	max-height: 100vh;
+	overflow-y: auto;
 }
 
-.remove-padding {
-	padding: 0 !important;
-}
 
-.filter-section{
-	padding: 0 10px;
-}

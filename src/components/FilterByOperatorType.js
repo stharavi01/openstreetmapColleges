@@ -8,14 +8,18 @@ const FilterByOperatorType = () => {
 
   const totalColleges = data.features.length;
 
-  const uniqueOperatorTypes = Array.from(
-    new Set(filteredProperties
-      .filter(type => type.operatorType !== undefined)
-      .map(type => type.operatorType))
-  );
+  const operatorTypeCounts = filteredProperties.reduce((counts, type) => {
+    if (type.operatorType !== undefined) {
+      counts[type.operatorType] = (counts[type.operatorType] || 0) + 1;
+    }
+    return counts;
+  }, {});
 
-  const operatorTypeElements = uniqueOperatorTypes.map((type, id) => (
-    <li key={id}>{type}</li>
+  const operatorTypeElements = Object.entries(operatorTypeCounts).map(([type, count], id) => (
+    <Table.Row key={id}>
+      <Table.Cell>{type}</Table.Cell>
+      <Table.Cell>{count}</Table.Cell>
+    </Table.Row>
   ));
 
   return (
@@ -28,14 +32,7 @@ const FilterByOperatorType = () => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          <Table.Row>
-            <Table.Cell>
-              <Header as='h2' textAlign='center' >
-                {operatorTypeElements}
-              </Header>
-            </Table.Cell>
-            <Table.Cell singleLine>Power Output</Table.Cell>
-          </Table.Row>
+          {operatorTypeElements}
         </Table.Body>
       </Table>
     </div>
