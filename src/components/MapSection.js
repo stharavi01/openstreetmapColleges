@@ -5,11 +5,7 @@ import { useGlobalContext } from "../context";
 
 const MapSection = () => {
   const {  filteredData } = useGlobalContext();
-  const [displaySecondaryCollege, setDisplaySecondaryCollege] = useState(filteredData);
-
-  useEffect(()=>{
-    setDisplaySecondaryCollege(filteredData);
-  },[filteredData]);
+ 
   
 	const position = [27.69798874810426, 85.32922094187085];
 	const filterFeatures = (feature) => {
