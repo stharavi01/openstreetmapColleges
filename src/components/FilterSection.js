@@ -10,7 +10,7 @@ const FilterSection = () => {
     <div className="filter-section">
       <h2 >Insights</h2>
       <FilterByOperatorType/>
-        {/* <FilterByIscedLevels/> */}
+      <FilterByIscedLevels/>
       <h3>Filters</h3> 
      
    
