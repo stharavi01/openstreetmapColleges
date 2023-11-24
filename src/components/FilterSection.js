@@ -1,3 +1,5 @@
+import CollegeLevelButtons from "./CollegeLevelButtons";
+import CollegeTypeButtons from "./CollegeTypeButtons";
 import FilterByIscedLevels from "./FilterByIscedLevels";
 import FilterByOperatorType from "./FilterByOperatorType";
 
@@ -12,7 +14,8 @@ const FilterSection = () => {
       <FilterByOperatorType/>
       <FilterByIscedLevels/>
       <h3>Filters</h3> 
-    
+    <CollegeTypeButtons/>
+    <CollegeLevelButtons/>
    
     </div>
   );
