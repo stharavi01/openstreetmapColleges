@@ -12,7 +12,7 @@ const FilterSection = () => {
       <FilterByOperatorType/>
       <FilterByIscedLevels/>
       <h3>Filters</h3> 
-     
+    
    
     </div>
   );

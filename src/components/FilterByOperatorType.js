@@ -6,12 +6,13 @@ const FilterByOperatorType = () => {
   const { filteredProperties } = useGlobalContext();
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const collegeTypeNumber = filteredProperties.reduce((total, collegeType) => {
+ const collegeTypeNumber = filteredProperties.reduce((total, collegeType) => {
     if (collegeType.operatorType !== undefined) {
       total[collegeType.operatorType] = (total[collegeType.operatorType] || 0) + 1;
     }
     return total;
   }, {});
+
 
   const collegeTypeElements = Object.entries(collegeTypeNumber).map(([collegeType, total], id) => (
     <Table.Row key={id}>
@@ -24,12 +25,13 @@ const FilterByOperatorType = () => {
     setIsExpanded(!isExpanded);
   };
 
+
   return (
     <>
       <Table celled >
         <Table.Header onClick={handleHeaderClick} >
           <Table.Row style={{ cursor: 'pointer' }}>
-            <Table.HeaderCell colSpan="2">College Types</Table.HeaderCell>
+            <Table.HeaderCell colSpan="2">College Types:</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         {isExpanded && (
@@ -38,6 +40,8 @@ const FilterByOperatorType = () => {
           </Table.Body>
         )}
       </Table>
+
+     
     </>
   );
 };

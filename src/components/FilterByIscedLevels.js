@@ -29,10 +29,10 @@ const collegeLevelElements = Object.entries(collegeLevelNumber).map(([collegeLev
 
   return (
     <>
-         <Table  >
+         <Table celled >
         <Table.Header onClick={handleHeaderClick} >
           <Table.Row style={{ cursor: 'pointer' }}>
-            <Table.HeaderCell colSpan="2">College Levels</Table.HeaderCell>
+            <Table.HeaderCell colSpan="2">College Levels:</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         {isExpanded && (
