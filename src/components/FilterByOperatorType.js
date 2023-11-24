@@ -6,17 +6,17 @@ const FilterByOperatorType = () => {
   const { filteredProperties } = useGlobalContext();
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const collegeTypeCounts = filteredProperties.reduce((counts, type) => {
-    if (type.operatorType !== undefined) {
-      counts[type.operatorType] = (counts[type.operatorType] || 0) + 1;
+  const collegeTypeNumber = filteredProperties.reduce((total, collegeType) => {
+    if (collegeType.operatorType !== undefined) {
+      total[collegeType.operatorType] = (total[collegeType.operatorType] || 0) + 1;
     }
-    return counts;
+    return total;
   }, {});
 
-  const collegeTypeElements = Object.entries(collegeTypeCounts).map(([type, count], id) => (
+  const collegeTypeElements = Object.entries(collegeTypeNumber).map(([collegeType, total], id) => (
     <Table.Row key={id}>
-      <Table.Cell style={{width:'50%'}}>{type}</Table.Cell>
-      <Table.Cell style={{width:'50%'}}>{count}</Table.Cell>
+      <Table.Cell style={{width:'50%'}}>{collegeType}</Table.Cell>
+      <Table.Cell style={{width:'50%'}}>{total}</Table.Cell>
     </Table.Row>
   ));
 
