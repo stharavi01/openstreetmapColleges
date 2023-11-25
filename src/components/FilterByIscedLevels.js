@@ -8,13 +8,20 @@ const FilterByIscedLevels = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   // Filter on Button Click
- const handleCollegeLevelDisplay = (collegeLevel) => {
+const handleCollegeLevelDisplay = (collegeLevel) => {
   if (collegeLevel === 'secondary') {
-    const filteredSecondary = filteredProperties.filter((collegeData) => collegeData.iscedLevel === 'secondary');
-    console.log(filteredSecondary);
-   
+    const filterCollege = filteredData.features.find((feature) => feature.properties.amenity === 
+    "College");
+
+    if (filterCollege) {
+      // Access properties of the filtered college
+      console.log(filterCollege.properties);
+    } else {
+      console.log('College not found');
+    }
   }
 };
+
 
 
 
