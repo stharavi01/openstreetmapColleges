@@ -1,36 +1,56 @@
 import { Table } from "semantic-ui-react";
 import { useGlobalContext } from "../context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Button } from 'semantic-ui-react'
 
 const FilterByIscedLevels = () => {
-  const { filteredProperties } = useGlobalContext();
-    const [isExpanded, setIsExpanded] = useState(false);
-    
-const collegeLevelNumber = filteredProperties.reduce((total, collegeLevel) => {
-  if (collegeLevel.iscedLevel !== '3' && typeof collegeLevel.iscedLevel === 'string') {
-    total[collegeLevel.iscedLevel] = (total[collegeLevel.iscedLevel] || 0) + 1;
+  const { filteredProperties, filteredData, setFilteredData } = useGlobalContext();
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Filter on Button Click
+ const handleCollegeLevelDisplay = (collegeLevel) => {
+  if (collegeLevel === 'secondary') {
+    const filteredSecondary = filteredProperties.filter((collegeData) => collegeData.iscedLevel === 'secondary');
+    console.log(filteredSecondary);
+   
   }
-  return total;
-}, {});
+};
 
 
 
-const collegeLevelElements = Object.entries(collegeLevelNumber).map(([collegeLevel, total], id) => (
-  <Table.Row key={id}>
-    <Table.Cell style={{ width: '50%' }}>{collegeLevel}</Table.Cell>
-    <Table.Cell style={{ width: '50%' }}>{total}</Table.Cell>
-  </Table.Row>
-));
 
+  // Get unique colleges level
+  const collegeLevelNumber = filteredProperties.reduce((total, collegeLevel) => {
+    if (collegeLevel.iscedLevel !== '3' && typeof collegeLevel.iscedLevel === 'string') {
+      total[collegeLevel.iscedLevel] = (total[collegeLevel.iscedLevel] || 0) + 1;
+    }
+    return total;
+  }, {});
 
- const handleHeaderClick = () => {
+  // Convert those unique levels into key value pair and display in table dynamically
+  const collegeLevelElements = Object.entries(collegeLevelNumber).map(([collegeLevel, total]) => (
+    <Table.Row key={collegeLevel}>
+      <Table.Cell style={{ width: '50%' }}>
+        <ul style={{ listStyleType: 'none' }}>
+          <li><Button floated='left' size='tiny' onClick={() => handleCollegeLevelDisplay(collegeLevel)}>{collegeLevel}</Button></li>
+        </ul>
+      </Table.Cell>
+      <Table.Cell style={{ width: '50%' }}>
+        <ul style={{ listStyleType: 'none' }}>
+          <li>{total}</li>
+        </ul>
+      </Table.Cell>
+    </Table.Row>
+  ));
+
+  const handleHeaderClick = () => {
     setIsExpanded(!isExpanded);
   };
 
   return (
     <>
-         <Table celled >
-        <Table.Header onClick={handleHeaderClick} >
+      <Table celled compact>
+        <Table.Header onClick={handleHeaderClick}>
           <Table.Row style={{ cursor: 'pointer' }}>
             <Table.HeaderCell colSpan="2">College Levels:</Table.HeaderCell>
           </Table.Row>
