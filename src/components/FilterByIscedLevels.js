@@ -12,19 +12,8 @@ const handleCollegeLevelDisplay = (collegeLevel) => {
   if (collegeLevel === 'secondary') {
     const filterCollege = filteredData.features.find((feature) => feature.properties.amenity === 
     "College");
-
-    if (filterCollege) {
-      // Access properties of the filtered college
-      console.log(filterCollege.properties);
-    } else {
-      console.log('College not found');
-    }
   }
 };
-
-
-
-
 
   // Get unique colleges level
   const collegeLevelNumber = filteredProperties.reduce((total, collegeLevel) => {
