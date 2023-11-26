@@ -17,7 +17,7 @@ const AppProvider = ({ children }) => {
       'personnel:count': personnelCount,
       'student:count': studentCount,
     } = properties;
-    return { name, iscedLevel, buildingCount, operatorType, personnelCount, studentCount };
+    return { name, iscedLevel, buildingCount, operatorType, personnelCount, studentCount, id};
   });
 
   const contextValue = {

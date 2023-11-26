@@ -25,6 +25,7 @@ const MapSection = () => {
     }
     return {
       fillColor: 'white',
+      color: "white",
     };
   };
 
