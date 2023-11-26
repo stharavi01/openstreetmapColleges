@@ -1,6 +1,7 @@
 import FilterByIscedLevels from "./FilterByIscedLevels";
 import FilterByOperatorType from "./FilterByOperatorType";
 
+
 const FilterSection = () => {
   return (
     <div className="filter-section">
@@ -8,7 +9,7 @@ const FilterSection = () => {
       <FilterByOperatorType/>
       <FilterByIscedLevels/>
       <h3>Filters</h3> 
-  
+
    
     </div>
   );

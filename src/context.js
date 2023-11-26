@@ -7,7 +7,7 @@ const AppProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState(data);
  
   const filteredProperties = filteredData.features.map((collegeData) => {
-    const { properties } = collegeData;
+    const { properties, geometry } = collegeData;
     const {
       name,
       'isced:level': iscedLevel,

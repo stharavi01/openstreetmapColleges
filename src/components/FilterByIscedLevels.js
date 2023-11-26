@@ -1,7 +1,8 @@
 import { Table } from "semantic-ui-react";
 import { useGlobalContext } from "../context";
 import { useState } from "react";
-import { Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react';
+
 
 const FilterByIscedLevels = () => {
   const { filteredProperties, filteredData, setFilteredData } = useGlobalContext();
