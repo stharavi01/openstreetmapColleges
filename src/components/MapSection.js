@@ -4,10 +4,10 @@ import L from "leaflet";
 import { useGlobalContext } from "../context";
 import { useState, useEffect } from "react";
 import schoolIcon from "../images/school.png";
-import * as turf from "@turf/turf"; // Import Turf.js library
+import * as turf from "@turf/turf"; 
 
 const MapSection = () => {
-  const { filteredData } = useGlobalContext();
+  const { filteredData,filteredProperties} = useGlobalContext();
   const [key, setKey] = useState(0);
   const position = [27.69798874810426, 85.32922094187085];
 
@@ -35,24 +35,30 @@ const MapSection = () => {
     popupAnchor: [0, -40],
   });
 
-  const collegeMarkers = filteredData.features
-    .filter(filterFeatures)
-    .map((feature, index) => {
-      const centroid = turf.centerOfMass(feature); // Calculate centroid using Turf.js
+ const collegeMarkers = filteredData.features
+  .filter(filterFeatures)
+  .map((feature, id) => {
+    const centroid = turf.centerOfMass(feature);
+    const centroidCoordinates = centroid.geometry.coordinates;
+    const markerPosition = [centroidCoordinates[1], centroidCoordinates[0]];
 
-      // Extract coordinates of the centroid
-      const centroidCoordinates = centroid.geometry.coordinates;
-      const markerPosition = [centroidCoordinates[1], centroidCoordinates[0]];
+    // Access properties for a specific college based on id
+    const collegeInfo = filteredProperties[id];
 
       return (
-        <Marker key={index} position={markerPosition} icon={schoolMarkerIcon}>
-          <Popup>
-            <div>
-              <h1>College Info</h1>
-              {/* You can add specific college information here */}
-            </div>
-          </Popup>
-        </Marker>
+        <Marker key={id} position={markerPosition} icon={schoolMarkerIcon}>
+        <Popup>
+          <div>
+            <h4>{collegeInfo.name}</h4>
+            <p>Level: {collegeInfo.iscedLevel}</p>
+            <p>Building Count: {collegeInfo.buildingCount}</p>
+             <p>Isced Level: {collegeInfo.iscedLevel}</p>
+              <p>Operator Type: {collegeInfo.operatorType}</p>
+               <p>Personnel Count: {collegeInfo.personnelCount}</p>
+               <p>student Count : {collegeInfo.studentCount}</p>
+          </div>
+        </Popup>
+      </Marker>
       );
     });
 
