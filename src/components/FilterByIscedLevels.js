@@ -1,19 +1,32 @@
 import { Table } from "semantic-ui-react";
 import { useGlobalContext } from "../context";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from 'semantic-ui-react'
 
 const FilterByIscedLevels = () => {
   const { filteredProperties, filteredData, setFilteredData } = useGlobalContext();
   const [isExpanded, setIsExpanded] = useState(false);
   
-  // Filter on Button Click
-const handleCollegeLevelDisplay = (collegeLevel) => {
+ const handleCollegeDisplay = (collegeLevel) => {
   if (collegeLevel === 'secondary') {
-    const filterCollege = filteredData.features.find((feature) => feature.properties.amenity === 
-    "College");
+    const updatedData = {
+      ...filteredData,
+      features: filteredData.features.filter(feature => feature.properties['isced:level'] === 'secondary')  
+    };
+    console.log(filteredData);
+    console.log(updatedData);
+    setFilteredData(updatedData);
+    
+  } else if (collegeLevel === 'higher_secondary') {
+    console.log(collegeLevel);
+    // Handle higher secondary
+  } else if (collegeLevel === 'college') {
+    console.log(collegeLevel);
+    // Handle college
   }
-};
+}
+
+
 
   // Get unique colleges level
   const collegeLevelNumber = filteredProperties.reduce((total, collegeLevel) => {
@@ -28,10 +41,10 @@ const handleCollegeLevelDisplay = (collegeLevel) => {
     <Table.Row key={collegeLevel}>
       <Table.Cell style={{ width: '50%' }}>
         <ul style={{ listStyleType: 'none' }}>
-          <li><Button floated='left' size='tiny' onClick={() => handleCollegeLevelDisplay(collegeLevel)}>{collegeLevel}</Button></li>
+          <li><Button floated='left' size='tiny' onClick={()=>{handleCollegeDisplay(collegeLevel)}}>{collegeLevel}</Button></li>
         </ul>
       </Table.Cell>
-      <Table.Cell style={{ width: '50%' }}>
+      <Table.Cell style={{ width: '5a0%' }}>
         <ul style={{ listStyleType: 'none' }}>
           <li>{total}</li>
         </ul>

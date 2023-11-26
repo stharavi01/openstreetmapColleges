@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, GeoJSON, Popup, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useGlobalContext } from "../context";
 

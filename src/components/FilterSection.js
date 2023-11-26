@@ -1,4 +1,3 @@
-import ChartInsight from "./ChartInsight";
 import FilterByIscedLevels from "./FilterByIscedLevels";
 import FilterByOperatorType from "./FilterByOperatorType";
 
@@ -9,7 +8,7 @@ const FilterSection = () => {
       <FilterByOperatorType/>
       <FilterByIscedLevels/>
       <h3>Filters</h3> 
-   <ChartInsight/>
+  
    
     </div>
   );
