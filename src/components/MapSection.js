@@ -1,10 +1,16 @@
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useGlobalContext } from "../context";
+import { useState, useEffect } from "react";
 
 const MapSection = () => {
   const {  filteredData } = useGlobalContext();
+  const [key, setKey] = useState(0);
 	const position = [27.69798874810426, 85.32922094187085];
+
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1);
+  }, [filteredData]);
 
 	const filterFeatures = (feature) => {
     return feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon';
@@ -18,14 +24,20 @@ const MapSection = () => {
        fillColor: 'blue', 
     };
   };
+  
 	return (
-			<MapContainer center={position} zoom={13} style={{height:'calc(100vh - 45px)', marginTop: '20px'}}>
+			<MapContainer key={key} center={position} zoom={13} style={{height:'calc(100vh - 45px)', marginTop: '20px'}}>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-			<GeoJSON data={filteredData}  style={geoJsonStyle} filter={filterFeatures}/>
-			
+			<GeoJSON data={filteredData} key={key} style={geoJsonStyle} filter={filterFeatures}/>
+			<Marker position={position}>
+        <Popup>
+          <div>
+            <h1>hello</h1>
+          </div> </Popup>
+      </Marker>
 			</MapContainer>
 	);
 };

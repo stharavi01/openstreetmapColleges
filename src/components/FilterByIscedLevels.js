@@ -13,20 +13,28 @@ const FilterByIscedLevels = () => {
       ...filteredData,
       features: filteredData.features.filter(feature => feature.properties['isced:level'] === 'secondary')  
     };
-    console.log(filteredData);
+    
     console.log(updatedData);
     setFilteredData(updatedData);
     
   } else if (collegeLevel === 'higher_secondary') {
-    console.log(collegeLevel);
-    // Handle higher secondary
+    const updatedData = {
+      ...filteredData,
+      features: filteredData.features.filter(feature => feature.properties['isced:level'] === 'higher_secondary')  
+    };
+   
+    console.log(updatedData);
+    setFilteredData(updatedData);
+
   } else if (collegeLevel === 'college') {
-    console.log(collegeLevel);
-    // Handle college
+    const updatedData = {
+      ...filteredData,
+      features: filteredData.features.filter(feature => feature.properties['isced:level'] === 'college')  
+    };
+     console.log(updatedData);
+    setFilteredData(updatedData);
   }
 }
-
-
 
   // Get unique colleges level
   const collegeLevelNumber = filteredProperties.reduce((total, collegeLevel) => {
