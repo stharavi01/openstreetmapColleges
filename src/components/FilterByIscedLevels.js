@@ -24,7 +24,7 @@ const FilterByIscedLevels = () => {
   // Get unique college levels
   const collegeLevelNumber = filteredData.features.reduce((total, feature) => {
     const iscedLevel = feature.properties['isced:level'];
-    if (iscedLevel != '3' && typeof iscedLevel === 'string') {
+    if (iscedLevel !== '3' && typeof iscedLevel === 'string') {
       total[iscedLevel] = (total[iscedLevel] || 0) + 1;
     }
     return total;
