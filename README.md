@@ -1,6 +1,6 @@
 # Kathmandu College Explorer
 
-![Project Screenshot](../src/images/hero.png)
+![Project Screenshot](./src/images/hero.png "Desktop Demo")
 
 
 ## About
