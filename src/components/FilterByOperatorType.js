@@ -10,6 +10,7 @@ const FilterByOperatorType = () => {
 
  
   const handleCollegeTypeDisplay = (collegeType) => {
+    if (!filteredData) return;
     const updatedFeatures = filteredData.features.filter(
       feature => feature.properties['operator:type'] === collegeType
     );
