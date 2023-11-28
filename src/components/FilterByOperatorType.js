@@ -7,14 +7,7 @@ const FilterByOperatorType = () => {
   const { filteredData, setFilteredData } = useGlobalContext();
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const collegeTypeNumber = filteredData.features.reduce((total, feature) => {
-    const operatorType = feature.properties['operator:type'];
-    if (operatorType !== undefined) {
-      total[operatorType] = (total[operatorType] || 0) + 1;
-    }
-    return total;
-  }, {});
-
+ 
   const handleCollegeTypeDisplay = (collegeType) => {
     const updatedFeatures = filteredData.features.filter(
       feature => feature.properties['operator:type'] === collegeType
@@ -41,6 +34,7 @@ const FilterByOperatorType = () => {
       </Table.Cell>
       <Table.Cell style={{ width: '50%' }}>{total}</Table.Cell>
     </Table.Row>
+ 
   ));
 
   const handleHeaderClick = () => {

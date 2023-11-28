@@ -56,7 +56,7 @@ const FilterByIscedLevels = () => {
 
   return (
     <>
-      <Table celled compact>
+      <Table celled compact style={{marginBottom: '80px'}}>
         <Table.Header onClick={handleHeaderClick}>
           <Table.Row style={{ cursor: 'pointer' }}>
             <Table.HeaderCell colSpan="2">College Levels:</Table.HeaderCell>
