@@ -1,5 +1,3 @@
-import { Header, Container } from "semantic-ui-react";
-
 const MainHeader = () => {
 	return (
 		<div className="header">
