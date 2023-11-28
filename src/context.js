@@ -4,7 +4,8 @@ import { data } from '../src/data';
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [filteredData, setFilteredData] = useState(data);
+  const [originalData, setOriginalData] = useState(data)
+  const [filteredData, setFilteredData] = useState(originalData);
  
   const filteredProperties = filteredData.features.map((collegeData) => {
     const { properties } = collegeData;
@@ -21,6 +22,8 @@ const AppProvider = ({ children }) => {
   });
 
   const contextValue = {
+    originalData,
+    setOriginalData,
     filteredProperties,
     filteredData,
     setFilteredData,

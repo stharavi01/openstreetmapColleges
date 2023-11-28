@@ -4,17 +4,17 @@ import {countCollegeTypes, countCollegeLevel} from "./Utility";
 import { useState, useEffect } from 'react';
 
 const CountCharts = ({collegeType, total}) => {
-  const { filteredData } = useGlobalContext();
+  const { originalData } = useGlobalContext();
    const [collegeTypeCount, setCollegeTypeCount] = useState({});
   const [collegeLevelCount, setCollegeLevelCount] = useState({});
 
   useEffect(() => {
    // Calculate college type counts when filteredData changes
-    setCollegeTypeCount(countCollegeTypes(filteredData.features));
+    setCollegeTypeCount(countCollegeTypes(originalData.features));
 
     // Calculate college level counts when filteredData changes
-    setCollegeLevelCount(countCollegeLevel(filteredData.features));
-  }, [filteredData]);
+    setCollegeLevelCount(countCollegeLevel(originalData.features));
+  }, [originalData]);
 
   const data = [
     {

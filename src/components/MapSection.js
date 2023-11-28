@@ -7,13 +7,13 @@ import schoolIcon from "../images/school.png";
 import * as turf from "@turf/turf"; 
 
 const MapSection = () => {
-  const { filteredData,filteredProperties} = useGlobalContext();
+  const { filteredProperties, originalData} = useGlobalContext();
   const [key, setKey] = useState(0);
   const position = [27.69798874810426, 85.32922094187085];
 
   useEffect(() => {
     setKey((prevKey) => prevKey + 1);
-  }, [filteredData]);
+  }, [originalData]);
 
   const filterFeatures = (feature) => {
     return feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon';
@@ -36,7 +36,7 @@ const MapSection = () => {
     popupAnchor: [0, -40],
   });
 
- const collegeMarkers = filteredData.features
+ const collegeMarkers = originalData.features
   .filter(filterFeatures)
   .map((feature, id) => {
     const centroid = turf.centerOfMass(feature);
@@ -74,7 +74,7 @@ const MapSection = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <GeoJSON data={filteredData} key={key} style={geoJsonStyle} filter={filterFeatures} />
+      <GeoJSON data={originalData} key={key} style={geoJsonStyle} filter={filterFeatures} />
       {collegeMarkers}
     </MapContainer>
   );

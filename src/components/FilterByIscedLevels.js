@@ -5,11 +5,11 @@ import { Button } from 'semantic-ui-react';
 import { countCollegeLevel } from "./Utility";
 
 const FilterByIscedLevels = () => {
-  const { filteredData, setFilteredData } = useGlobalContext();
+  const { filteredData, originalData, setOriginalData } = useGlobalContext();
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleCollegeDisplay = (collegeLevel) => {
-    const updatedFeatures = filteredData.features.filter(
+    const updatedFeatures = originalData.features.filter(
       feature => feature.properties['isced:level'] === collegeLevel
     );
 
@@ -19,7 +19,7 @@ const FilterByIscedLevels = () => {
     };
 
     console.log(updatedData);
-    setFilteredData(updatedData);
+    setOriginalData(updatedData);
   };
  
 

@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 import {countCollegeTypes} from "./Utility";
 
 const FilterByOperatorType = () => {
-  const { filteredData, setFilteredData } = useGlobalContext();
+  const { filteredData, setOriginalData } = useGlobalContext();
   const [isExpanded, setIsExpanded] = useState(false);
 
  
@@ -20,7 +20,7 @@ const FilterByOperatorType = () => {
       features: updatedFeatures
     };
 
-    setFilteredData(updatedData);
+    setOriginalData(updatedData);
   };
 
   const collegeTypeElements = Object.entries(countCollegeTypes(filteredData.features)).map(([collegeType, total]) => (
