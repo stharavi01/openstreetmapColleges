@@ -9,7 +9,7 @@ export const countCollegeTypes = (features) => {
   }, {});
 };
 
-// Utility function to count occurrences of college types
+// Utility function to count occurrences of college level
  export const countCollegeLevel = (features) => {
   if (!features || !Array.isArray(features)) {
     return {}; // Return an empty object if features are not defined or not an array
