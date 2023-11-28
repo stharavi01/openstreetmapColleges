@@ -5,14 +5,11 @@ import { Icon } from 'semantic-ui-react';
 import { useGlobalContext } from "../context";
 
 const FilterSection = () => {
-const {originalData, filteredData, setOriginalData} = useGlobalContext();
+const {originalData, setFilteredData} = useGlobalContext();
 
-const handleRefresh = () => {
-  console.log(originalData);
-  console.log(filteredData);
-setOriginalData(originalData);
- console.log(originalData);
-  console.log(filteredData);
+const handleRefresh = () => { 
+setFilteredData(originalData);
+
 }
 
   return (

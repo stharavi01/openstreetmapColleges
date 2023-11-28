@@ -4,7 +4,7 @@ import { Button } from 'semantic-ui-react';
 import { countCollegeTypes } from './Utility';
 
 const FilterByOperatorType = () => {
-  const { filteredData, setOriginalData } = useGlobalContext();
+  const { filteredData, setFilteredData } = useGlobalContext();
 
   const handleCollegeTypeDisplay = (collegeType) => {
     const updatedFeatures = filteredData.features.filter(
@@ -16,7 +16,7 @@ const FilterByOperatorType = () => {
       features: updatedFeatures,
     };
 
-    setOriginalData(updatedData);
+    setFilteredData(updatedData);
   };
 
   const collegeTypeButtons = Object.entries(countCollegeTypes(filteredData.features)).map(
@@ -25,6 +25,7 @@ const FilterByOperatorType = () => {
         key={collegeType}
         onClick={() => handleCollegeTypeDisplay(collegeType)}
         style={{ margin: '5px' }}
+        size= 'tiny'
       >
         {collegeType} 
       </Button>

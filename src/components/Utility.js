@@ -2,7 +2,7 @@
 export const countCollegeTypes = (features) => {
   return features.reduce((total, feature) => {
     const operatorType = feature.properties['operator:type'];
-    if (operatorType !== undefined) {
+    if (operatorType !== undefined ) {
       total[operatorType] = (total[operatorType] || 0) + 1;
     }
     return total;
@@ -11,13 +11,9 @@ export const countCollegeTypes = (features) => {
 
 // Utility function to count occurrences of college level
  export const countCollegeLevel = (features) => {
-  if (!features || !Array.isArray(features)) {
-    return {}; // Return an empty object if features are not defined or not an array
-  }
-
   return features.reduce((total, feature) => {
     const iscedLevel = feature.properties['isced:level'];
-    if (iscedLevel !== '3' && typeof iscedLevel === 'string') {
+    if (typeof iscedLevel === 'string' && iscedLevel !== undefined) {
       total[iscedLevel] = (total[iscedLevel] || 0) + 1;
     }
     return total;

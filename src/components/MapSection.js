@@ -7,7 +7,7 @@ import schoolIcon from "../images/school.png";
 import * as turf from "@turf/turf"; 
 
 const MapSection = () => {
-  const { filteredProperties, originalData} = useGlobalContext();
+  const { filteredProperties, filteredData, originalData} = useGlobalContext();
   const [key, setKey] = useState(0);
   const position = [27.69798874810426, 85.32922094187085];
 
@@ -36,7 +36,7 @@ const MapSection = () => {
     popupAnchor: [0, -40],
   });
 
- const collegeMarkers = originalData.features
+ const collegeMarkers = filteredData.features
   .filter(filterFeatures)
   .map((feature, id) => {
     const centroid = turf.centerOfMass(feature);
@@ -50,7 +50,8 @@ const MapSection = () => {
         <Marker key={id} position={markerPosition} icon={schoolMarkerIcon}>
         <Popup>
           <div>
-            <h4>{collegeInfo.name}</h4>
+            
+            <h4>{collegeInfo.name || 0}</h4>
             <p>Level: {collegeInfo.iscedLevel}</p>
             <p>Building Count: {collegeInfo.buildingCount}</p>
              <p>Isced Level: {collegeInfo.iscedLevel}</p>
