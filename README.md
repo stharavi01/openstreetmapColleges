@@ -1,8 +1,6 @@
-# Project Name
+# Kathmandu College Explorer
 
-Kathmandu College Explorer
-
-![Project Screenshot](../college-project//src/images/hero.png)
+![Project Screenshot](../college-project/src/images/hero.png)
 
 
 ## About
