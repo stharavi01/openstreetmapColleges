@@ -1,33 +1,40 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useGlobalContext } from "../context";
+import {countCollegeTypes, countCollegeLevel} from "./Utility";
+import { useState, useEffect } from 'react';
 
 const CountCharts = ({collegeType, total}) => {
-  const { filteredProperties } = useGlobalContext();
-  
+  const { filteredData } = useGlobalContext();
+   const [collegeTypeCount, setCollegeTypeCount] = useState({});
+  const [collegeLevelCount, setCollegeLevelCount] = useState({});
+
+  useEffect(() => {
+   // Calculate college type counts when filteredData changes
+    setCollegeTypeCount(countCollegeTypes(filteredData.features));
+
+    // Calculate college level counts when filteredData changes
+    setCollegeLevelCount(countCollegeLevel(filteredData.features));
+  }, [filteredData]);
+
   const data = [
     {
       name: 'CollegeTypes',
-      private: 40,
-      private_non_profit: 24,
-      government: 24,
-      community: 10,
+      private: collegeTypeCount.private || 0,
+      private_non_profit: collegeTypeCount.private_non_profit || 0,
+      government: collegeTypeCount.government || 0,
+      community: collegeTypeCount.community || 0,
     },
     {
-      name: 'CollegeLevels',
-      secondary: 30,
-      higher_secondary: 13,
-      college: 22,
+    name: 'CollegeLevels',
+      secondary: collegeLevelCount.secondary || 0,
+      higher_secondary: collegeLevelCount.higher_secondary || 0,
+      college: collegeLevelCount.college || 0,
     },
   ];
 
   return (
    
     <div style={{ width: '100%', height: '300px' }}>
-       <div>
-      <p>College Type: {collegeType}</p>
-      <p>Total: {total}</p>
-      {/* Other content using collegeType and total */}
-    </div>
       <ResponsiveContainer width="100%">
         <BarChart
           data={data}

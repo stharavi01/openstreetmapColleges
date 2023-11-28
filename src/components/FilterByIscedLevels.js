@@ -2,6 +2,7 @@ import { Table } from "semantic-ui-react";
 import { useGlobalContext } from "../context";
 import { useState } from "react";
 import { Button } from 'semantic-ui-react';
+import { countCollegeLevel } from "./Utility";
 
 const FilterByIscedLevels = () => {
   const { filteredData, setFilteredData } = useGlobalContext();
@@ -20,18 +21,10 @@ const FilterByIscedLevels = () => {
     console.log(updatedData);
     setFilteredData(updatedData);
   };
-
-  // Get unique college levels
-  const collegeLevelNumber = filteredData.features.reduce((total, feature) => {
-    const iscedLevel = feature.properties['isced:level'];
-    if (iscedLevel !== '3' && typeof iscedLevel === 'string') {
-      total[iscedLevel] = (total[iscedLevel] || 0) + 1;
-    }
-    return total;
-  }, {});
+ 
 
   // Convert unique levels into table elements dynamically
-  const collegeLevelElements = Object.entries(collegeLevelNumber).map(([collegeLevel, total]) => (
+const collegeLevelElements = Object.entries(countCollegeLevel(filteredData.features)).map(([collegeLevel, total]) => (
     <Table.Row key={collegeLevel}>
       <Table.Cell style={{ width: '50%' }}>
         <ul style={{ listStyleType: 'none' }}>

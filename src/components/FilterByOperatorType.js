@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useGlobalContext } from '../context';
 import { Table } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
+import {countCollegeTypes} from "./Utility";
 
 const FilterByOperatorType = () => {
   const { filteredData, setFilteredData } = useGlobalContext();
@@ -21,7 +22,8 @@ const FilterByOperatorType = () => {
     setFilteredData(updatedData);
   };
 
-  const collegeTypeElements = Object.entries(collegeTypeNumber).map(([collegeType, total]) => (
+  const collegeTypeElements = Object.entries(countCollegeTypes(filteredData.features)).map(([collegeType, total]) => (
+
     <Table.Row key={collegeType}>
       <Table.Cell style={{ width: '50%' }}>
         <ul style={{ listStyleType: 'none' }}>
