@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context";
 import {countCollegeTypes, countCollegeLevel} from "./Utility";
 import { useState, useEffect } from 'react';
 
-const CountCharts = ({collegeType, total}) => {
+const CountCharts = () => {
   const { filteredData } = useGlobalContext();
    const [collegeTypeCount, setCollegeTypeCount] = useState({});
   const [collegeLevelCount, setCollegeLevelCount] = useState({});
@@ -18,14 +18,14 @@ const CountCharts = ({collegeType, total}) => {
 
   const data = [
     {
-      name: 'CollegeTypes',
+      name: 'College Types',
       private: collegeTypeCount.private || 0,
       private_non_profit: collegeTypeCount.private_non_profit || 0,
       government: collegeTypeCount.government || 0,
       community: collegeTypeCount.community || 0,
     },
     {
-    name: 'CollegeLevels',
+    name: 'College Levels',
       secondary: collegeLevelCount.secondary || 0,
       higher_secondary: collegeLevelCount.higher_secondary || 0,
       college: collegeLevelCount.college || 0,

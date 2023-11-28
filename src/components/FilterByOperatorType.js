@@ -35,7 +35,7 @@ const FilterByOperatorType = () => {
   return (
     <>
       <div style={{ marginBottom: '10px' }}>
-        <h4>College Types</h4>
+        <h4>College Types & Levels</h4>
         {collegeTypeButtons}
       </div>
     </>
