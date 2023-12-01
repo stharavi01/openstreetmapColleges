@@ -1,7 +1,8 @@
+import { Header } from 'semantic-ui-react'
 const MainHeader = () => {
 	return (
 		<div className="header">
-			<h2>Colleges in Kathmandu</h2>
+			<header>Colleges in Kathmandu</header>
 		</div>
 	);
 };
