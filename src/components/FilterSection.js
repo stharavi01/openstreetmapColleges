@@ -6,28 +6,24 @@ import { useGlobalContext } from "../context";
 import CollegeSearch from "./CollegeSearch";
 
 const FilterSection = () => {
-const {originalData, setFilteredData} = useGlobalContext();
+  const { originalData, setFilteredData } = useGlobalContext();
 
-const handleRefresh = () => { 
-setFilteredData(originalData);
+  const handleRefresh = () => {
+    setFilteredData(originalData);
 
-}
+  }
 
   return (
     <div className="filter-section">
-       <h3>Filters <span onClick={handleRefresh} style={{marginLeft: '5px', cursor: 'pointer'}}> 
-          <Icon name='undo'/>
-          </span>
-          </h3> 
+      <h3>Filters <span onClick={handleRefresh} style={{ marginLeft: '5px', cursor: 'pointer' }}>
+        <Icon name='undo' />
+      </span>
+      </h3>
       <p>Search your desired college </p>
-      <CollegeSearch/>
-     <FilterByOperatorType/>
-      {/* <FilterByIscedLevels/> */}
-
+      <CollegeSearch />
+      <FilterByOperatorType />
       <h2 >Insights</h2>
-     <CountCharts/>
-    
-   
+      <CountCharts />
     </div>
   );
 };
